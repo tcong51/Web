@@ -1,11 +1,6 @@
 <?php
 session_start();
-/**
- * Created by PhpStorm.
- * User: LE DINH CHUNG
- * Date: 17/04/2014
- * Time: 15:26
- */
+
 include("../administrator/connect.php");
 include("../administrator/function.php");
 echo "<meta charset='UTF-8' />";

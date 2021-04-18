@@ -8,7 +8,7 @@
 						?>	
 					<?php 
 					
-					   $sql="SELECT * FROM danhmuc WHERE dequi=1";
+					   $sql="SELECT * FROM LoaiHangHoa WHERE DeQui=1";
 					   $result= $con->query($sql);
 					?>
 						<ul>
@@ -16,7 +16,7 @@
 						  foreach($result as $row)
 						   {
 						?>
-							<li><a href="index.php?madm=<?php echo $row['madm'] ?>"><?php echo $row["tendm"];?></a></li>
+							<li><a href="index.php?madm=<?php echo $row['MaLoaiHang'] ?>"><?php echo $row["TenLoaiHang"];?></a></li>
 							<?php } ?>
 							
 							
@@ -28,7 +28,7 @@
 					<div class="center">
 						<h4> PHỤ KIỆN</h4>
 						<?php 
-					   $sql="SELECT * from danhmuc where dequi=2";
+					   $sql="SELECT * from LoaiHangHoa where DeQui=2";
 					   $result= $con->query($sql);
 					?>
 						<ul>
@@ -36,7 +36,7 @@
 						   foreach($result as $row)
 						   {
 						?>
-							<li><a href="index.php?madm=<?php echo $row['madm'] ?>"><?php echo $row["tendm"];?></a></li>
+							<li><a href="index.php?madm=<?php echo $row['MaLoaiHang'] ?>"><?php echo $row["TenLoaiHang"];?></a></li>
 							<?php } ?>
 							
 						</ul>

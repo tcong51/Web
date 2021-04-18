@@ -85,17 +85,17 @@ if(isset($_GET['admin']))
 					</tr>
 					<?php 
 						$i=1;
-						$sql=$con->query("select * from hoadon where trangthai='1'");
+						$sql=$con->query("select * from dathang where TrangThai='1'");
 						while($row=$sql->fetch_assoc())
 						{
 					
 					?>
 					<tr>
 						<td><?php echo $i++; ?></td>
-						<td><?php echo $row['hoten'] ?></td>
-						<td><?php echo $row['diachi'] ?></td>
-						<td><?php echo $row['dienthoai'] ?></td>
-						<td><?php echo $row['ngaydathang'] ?></td>
+						<td><?php echo $row['HoTen'] ?></td>
+						<td><?php echo $row['DiaChi'] ?></td>
+						<td><?php echo $row['DienThoai'] ?></td>
+						<td><?php echo $row['NgayDH'] ?></td>
 					</tr>
 					<?php } ?>
 					<tr>

@@ -1,0 +1,19 @@
+1. Sử dụng xampp -> phpMyadmin tạo cơ sở dữ liệu quanlydathang
+2. Import vào csdl quanlydathang bằng file trong thư mục database.
+3. Thư mục chứa toàn bộ code tên là 'dienthoai'. Phải nằm trong đường dẫn localhost/dienthoai/ 
+ (Tránh trường hợp sai thư mục lỗi các đường dẫn).
+4. Note: 
+-Để truy cập tài khoản administrator :
+	username: administrator 
+	password: administrator
+-Truy cập tài khoản khách bằng cách đăng ký or có thể dùng tài khoản:
+	username: tcong
+	password: 21212121
+- Nếu tên cơ sở dữ liệu bị đổi có thể đổi connect trong thư mục include/connect.php.
+5. Các thư mục gồm:
+- admin: xử lý phần chức năng của admin
+- cart: xử lý phần đặt hàng
+- home_include: giao diện
+- img: hình ảnh
+- include: kết nối
+	và các tệp ở trang chủ.

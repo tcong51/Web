@@ -7,13 +7,13 @@
 </head>
 <?php
 	include '../include/connect.php';
-	$hienthi = $con ->query("SELECT * FROM danhmuc");
+	$hienthi = $con ->query("SELECT * FROM loaihanghoa");
 			 $dem = count($hienthi ->fetch_assoc());
 			 
 ?>
 <div class="quanlysp">
 	<h3>QUẢN LÝ DANH MỤC</h3>
-<a href='?admin=themdm' >Thêm danh mục</a><br>
+<a href='#' >Thêm danh mục</a><br>
 	
 </div>
 <form action="" method="post" name="frmTest" onsubmit="if(CheckForm() == false) return false">
@@ -35,19 +35,19 @@
 		?>
                    <tr>
                    <td class="masp_hienthi_sp">
-                    <?php echo $bien['madm'] ?>
+                    <?php echo $bien['MaLoaiHang'] ?>
                    </td>
                    <td class="tensp_hienthi_sp">
-                    <b><?php echo $bien['tendm'] ?></b>
+                    <b><?php echo $bien['TenLoaiHang'] ?></b>
                     </td>
                     <td class="masp_hienthi_sp">
 					
                     <?php
-						if($bien['dequi'] ==0) {
+						if($bien['DeQui'] ==0) {
 							echo "Danh mục chính";
 						}
 						else {
-							if($bien['dequi']==1) {
+							if($bien['DeQui']==1) {
 								echo "Điện thoại";
 							}
 							else {

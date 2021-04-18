@@ -19,7 +19,7 @@ if(isset($_POST['submit']))
 		//Lay ngay cua he thong
 		$ngay=date("Y").":".date("m").":".date("d").":".date("H").":".date("i").":".date("s");
 	
-	$insert="INSERT INTO nguoidung VALUES('','$tennd', '$user', '$pass','$ngaysinh','$gioitinh', '$email','$dienthoai', '$diachi','$ngay', '1')";
+	$insert="INSERT INTO nguoidung VALUES('','$tennd', '$user', '$pass','$ngaysinh','$gioitinh', '$email','$dienthoai', '$diachi','$ngay', '2')";
 		$query=$con->query($insert);
 		if($query) {
 		redirect("index.php", "Bạn đã đăng ký thành công.", 2 );

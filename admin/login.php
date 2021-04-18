@@ -4,11 +4,11 @@ if(isset($_SESSION['username']))
 {
 	
 
-if($_SESSION['phanquyen']==1)
+if($_SESSION['phanquyen']==2)
 {
 	header("location:../index.php");
 }
-if($_SESSION['phanquyen']==0)
+if($_SESSION['phanquyen']==1)
 {
 	header("location:admin.php");
 }
@@ -28,7 +28,7 @@ if(isset($_POST['login']))
 {
     $username = $_POST['user'];
     $password = MD5($_POST['pass']);
-    $sql_check = mysql_query("select * from nguoidung where username = '$username'");
+    $sql_check = mysql_query("SELECT * from nguoidung where UserName = '$username'");
     $dem = mysql_num_rows($sql_check);
     if($dem == 0)
     {
@@ -36,7 +36,7 @@ if(isset($_POST['login']))
     }
     else
     {
-        $sql_check2 = "select * from nguoidung where username = '$username' and password = '$password'";
+        $sql_check2 = "SELECT * from nguoidung where UserName = '$username' and Password = '$password'";
 		$row=mysql_query($sql_check2);	
         $dem2 = mysql_num_rows($row);
         if($dem2 == 0)
@@ -47,9 +47,9 @@ if(isset($_POST['login']))
 		 while($rows = mysql_fetch_array($row))
             {
               $_SESSION['username'] = $username;
-				$_SESSION['phanquyen'] = $row['phanquyen'];
-				$_SESSION['idnd'] = $row['idnd'];
-                if($rows['phanquyen'] == 0)
+				$_SESSION['phanquyen'] = $row['PhanqQuyen'];
+				$_SESSION['idnd'] = $row['ID_ND'];
+                if($rows['phanquyen'] == 1)
                 {
                     
 					echo "

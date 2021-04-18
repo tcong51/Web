@@ -1,6 +1,6 @@
 ﻿
 
-<form action="insert_hotro.php" method="post" name="frm" onsubmit="return kiemtra()">
+<form action="#" method="post" name="frm" onsubmit="return kiemtra()">
 	<div id="hotro">
 		<h3>HỖ TRỢ</h3>
 		<table>

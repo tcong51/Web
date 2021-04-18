@@ -12,7 +12,7 @@
 			foreach($_SESSION['id'] as $idsp=>$value)
 			{
 				if ($value==1)
-				$sql="update hoadon set trangthai=2 where idsp='$idsp'";
+				$sql="update dathang set TrangThai=2 where SoDonDH='$idsp'";
 				$con->query($sql);
 				unset($_SESSION['id']);
 				echo "
@@ -28,7 +28,7 @@
 				foreach($_SESSION['id'] as $idsp=>$value)
 				{
 					if ($value==1)
-					$sql="update hoadon set trangthai=3 where idsp='$idsp'";
+					$sql="update dathang set TrangThai=3 where SoDonDH='$idsp'";
 					$con->query($sql);
 					unset($_SESSION['id']);
 					echo "
@@ -44,7 +44,7 @@
 						foreach($_SESSION['id'] as $idsp=>$value)
 						{
 							if ($value==1)
-							$sql="delete from sanpham where idsp='$idsp'";
+							$sql="delete from hanghoa where MSHH='$idsp'";
 							$con->query($sql);
 							unset($_SESSION['id']);
 							echo "

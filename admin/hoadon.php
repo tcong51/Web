@@ -4,7 +4,7 @@
 	include ('../include/connect.php');
 	
     
-    $query = $con->query("SELECT * from hoadon");
+    $query = $con->query("SELECT * from dathang");
     $dem = 0;
 	foreach($query  as $value){
 		$dem++;
@@ -40,26 +40,15 @@
     </tr>
 
     <?php
-	
-	/*------------Phan trang------------- */
-		// Nếu đã có sẵn số thứ tự của trang thì giữ nguyên (ở đây tôi dùng biến $page) 
-		// nếu chưa có, đặt mặc định là 1!   
-
 		if(!isset($_GET['page'])){  
 		$page = 1;  
 		} else {  
 		$page = $_GET['page'];  
 		}  
-
 		// Chọn số kết quả trả về trong mỗi trang mặc định là 10 
 		$max_results = 10;  
-
-		// Tính số thứ tự giá trị trả về của đầu trang hiện tại 
 		$from = (($page * $max_results) - $max_results);  
-
-		// Chạy 1 MySQL query để hiện thị kết quả trên trang hiện tại  
-
-		$sql = $con->query("SELECT * FROM hoadon ORDER by mahd DESC  LIMIT $from, $max_results"); 
+		$sql = $con->query("SELECT * FROM dathang ORDER by SoDonDH DESC  LIMIT $from, $max_results"); 
 
 
 
@@ -69,14 +58,14 @@
         {
 ?>
             <tr class='noidung_hienthi_sp'>
-                <td class="masp_hienthi_sp"><input type="checkbox" name="id[]" class="item" class="checkbox" value="<?=$bien['mahd']?>"/></td>
-                <td class="masp_hienthi_sp"><?php  echo $bien['mahd'] ?></td>
-                <td class="stt_hienthi_sp"><?php echo $bien['hoten'] ?></td>
-				<td class="sl_hienthi_sp"><?php echo $bien['diachi'] ?></td>
-				<td class="sl_hienthi_sp">0<?php echo $bien['dienthoai'] ?></td>
-				<td class="sl_hienthi_sp"><?php echo $bien['email'] ?></td>
-				<td class="sl_hienthi_sp"><?php if($bien['trangthai']==1) echo "Đang xử lý"; else if($bien['trangthai']==2) echo"Đã giao hàng"; else echo"Đã hủy đơn hàng";?></td>
-				<td class="active_hienthi_sp" style="width:70px;"><a href="admin.php?admin=chitiethoadon&mahd=<?php echo $bien['mahd']; ?> " style="float:left;">Chi tiết</a>
+                <td class="masp_hienthi_sp"><input type="checkbox" name="id[]" class="item" class="checkbox" value="<?=$bien['SoDonDH']?>"/></td>
+                <td class="masp_hienthi_sp"><?php  echo $bien['SoDonDH'] ?></td>
+                <td class="stt_hienthi_sp"><?php echo $bien['HoTen'] ?></td>
+				<td class="sl_hienthi_sp"><?php echo $bien['DiaChi'] ?></td>
+				<td class="sl_hienthi_sp">0<?php echo $bien['DienThoai'] ?></td>
+				<td class="sl_hienthi_sp"><?php echo $bien['Email'] ?></td>
+				<td class="sl_hienthi_sp"><?php if($bien['TrangThai']==1) echo "Đang xử lý"; else if($bien['TrangThai']==2) echo"Đã giao hàng"; else echo"Đã hủy đơn hàng";?></td>
+				<td class="active_hienthi_sp" style="width:70px;"><a href="admin.php?admin=chitiethoadon&mahd=<?php echo $bien['SoDonDH']; ?> " style="float:left;">Chi tiết</a>
 					
 				</td>
             </tr>

@@ -5,14 +5,13 @@
 	{
 		$_SESSION['id'][$mahd]=1;
 	}
-	
 
 		if(isset($_POST['giaohang']))
 		{
 			foreach($_SESSION['id'] as $mahd=>$value)
 			{
 				if ($value==1)
-				$sql="update hoadon set trangthai=2 where mahd='$mahd'";
+				$sql="update dathang set TrangThai=2 where SoDonDH='$mahd'";
 				$con->query($sql);
 				unset($_SESSION['id']);
 				echo "
@@ -28,7 +27,7 @@
 				foreach($_SESSION['id'] as $mahd=>$value)
 				{
 					if ($value==1)
-					$sql="update hoadon set trangthai=3 where mahd='$mahd'";
+					$sql="update dathang set TrangThai=3 where SoDonDH='$mahd'";
 					$con->query($sql);
 					unset($_SESSION['id']);
 					echo "
@@ -44,9 +43,9 @@
 						foreach($_SESSION['id'] as $mahd=>$value)
 						{
 							if ($value==1)
-							$sql="delete from hoadon where mahd='$mahd'";
+							$sql="DELETE from dathang where SoDonDH='$mahd'";
 							$con->query($sql);
-							$sql1="delete from chitiethoadon where mahd='$mahd'";
+							$sql1="DELETE from chitietdathang where SoDonDH='$mahd'";
 							$con->query($sql1);
 							unset($_SESSION['id']);
 							echo "

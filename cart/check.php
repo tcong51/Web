@@ -5,14 +5,14 @@
      foreach($_SESSION['cart'] as $stt => $soluong)
             {
                
-               $sql="select soluong,tensp,daban from sanpham where idsp=$stt";
+               $sql="select SoLuongHang,TenHH,DaBan from hanghoa where MSHH=$stt";
                $rows=$con->query($sql);
                $row=$rows->fetch_assoc();
                $sl=$_SESSION['cart'][$stt];
-               if($row['soluong']==0 or ($row['soluong']-$row['daban'])<$sl)
+               if($row['SoLuongHang']==0 or ($row['SoLuongHang']-$row['DaBan'])<$sl)
                {
                echo '<meta http-equiv="refresh" content="2;index.php?content=cart">';
-               echo "Sản phẩm <font color='red'><b>". $row['tensp']."</b></font> đã hết hoặc không đủ hàng trong kho<br><br>";
+               echo "Sản phẩm <font color='red'><b>". $row['TenHH']."</b></font> đã hết hoặc không đủ hàng trong kho<br><br>";
                $loi+=1;
                }
             }

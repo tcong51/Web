@@ -38,15 +38,15 @@ a.submit();
 		if(isset($_SESSION['idnd'])){
 		
 		
-			$sql=$con->query("select * from nguoidung where idnd='".$_SESSION['idnd']."'");
+			$sql=$con->query("select * from nguoidung where ID_ND='".$_SESSION['idnd']."'");
 			$row=$sql->fetch_assoc();
 			}
 		?>
 		<tr><td colspan="2" align="center" style="">Thông tin khách hàng</td></tr>
-		<tr><td class="tieude">Tên khách hàng</td><td><input type="text" name="hoten" value="<?php echo $row['tennd'] ?>"/></td></tr>
-		<tr><td class="tieude">Địa chỉ giao hàng</td><td><input type="text" name="diachi" value="<?php echo $row['diachi'] ?>"/></td></tr>
-		<tr><td class="tieude">Số điện thoại</td><td><input type="text" name="dienthoai" value="0<?php echo $row['dienthoai'] ?>"/></td></tr>
-		<tr><td class="tieude">Email</td><td><input type="text" name="email" value="<?php echo $row['email'] ?>"/></td></tr>
+		<tr><td class="tieude">Tên khách hàng</td><td><input type="text" name="hoten" value="<?php echo $row['TenND'] ?>"/></td></tr>
+		<tr><td class="tieude">Địa chỉ giao hàng</td><td><input type="text" name="diachi" value="<?php echo $row['DiaChi'] ?>"/></td></tr>
+		<tr><td class="tieude">Số điện thoại</td><td><input type="text" name="dienthoai" value="0<?php echo $row['DienThoai'] ?>"/></td></tr>
+		<tr><td class="tieude">Email</td><td><input type="text" name="email" value="<?php echo $row['Email'] ?>"/></td></tr>
 		
 		<tr><td colspan="2" align="center" style="">Phương thức thanh toán</td></tr>
 		<tr><td class="tieude">Phương thức: </td><td>

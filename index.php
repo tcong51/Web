@@ -196,7 +196,7 @@ e.preventDefault();
 				</div><!-- End .lg-footer -->
 				<div id="noidung">
 					<ul>
-						<li><span id="tencongty">Công Ty TNHH ĐIỆN THOẠI ZONE</span></li> <br>
+						<li><span id="tencongty">Công Ty TNHH ĐIỆN THOẠI TCZONE</span></li> <br>
 						
 						<li>Địa chỉ: Ninh Kiều - Cần Thơ </li>
 						<li>Điện thoại: 0909090909 - Hotline:  0809090808</li>

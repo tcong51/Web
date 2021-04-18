@@ -42,7 +42,7 @@
 							<p id="soluonggioh ang">Có <span><?=$count?></span> sản phẩm trong giỏ</p>
 							 
 							<p id="tiengiohang">
-							 <?php $sql ="select * from sanpham where idsp in(";
+							 <?php $sql ="select * from hanghoa where MSHH in(";
         
 		foreach($_SESSION['cart'] as $id => $soluong)
             {
@@ -53,11 +53,11 @@
             {
                 $sql = substr($sql,0,-1);
             }
-      $sql .=' )order by idsp 	';
+      $sql .=' )order by MSHH 	';
       $rows=$con->query($sql);
 while ($row=$rows->fetch_assoc())
 {  
-$tongtien+=$_SESSION['cart'][$row['idsp']]*$row['gia']; 
+$tongtien+=$_SESSION['cart'][$row['MSHH']]*$row['Gia']; 
 }
 ?> <?php  echo number_format($tongtien,"0",",",".");?> VNĐ
 							</p>
@@ -104,15 +104,5 @@ $tongtien+=$_SESSION['cart'][$row['idsp']]*$row['gia'];
 				</div><!-- End .yahoo -->
 				
 				<div id="fb-root">
-					<!-- <div class="center1">
-						<div id="fb-root"></div>
-						<script>(function(d, s, id) {
-						  var js, fjs = d.getElementsByTagName(s)[0];
-						  if (d.getElementById(id)) return;
-						  js = d.createElement(s); js.id = id;
-						  js.src = "//connect.facebook.net/vi_VN/all.js#xfbml=1";
-						  fjs.parentNode.insertBefore(js, fjs);
-						}(document, 'script', 'facebook-jssdk'));</script>
-						<div class="fb-like-box" data-href="https://www.facebook.com/%E1%BB%AA-th%C3%AC-t%E1%BB%9B" data-width="188" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="false"></div>
-					</div>End .center1 -->
-				</div><!-- End .facebook -->
+
+				</div>

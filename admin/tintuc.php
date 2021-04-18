@@ -35,10 +35,6 @@
     </tr>
 
     <?php
-	
-	/*------------Phan trang------------- */
-		// Nếu đã có sẵn số thứ tự của trang thì giữ nguyên (ở đây tôi dùng biến $page) 
-		// nếu chưa có, đặt mặc định là 1!   
 
 		if(!isset($_GET['page'])){  
 		$page = 1;  
@@ -48,12 +44,7 @@
 
 		// Chọn số kết quả trả về trong mỗi trang mặc định là 10 
 		$max_results = 10;  
-
-		// Tính số thứ tự giá trị trả về của đầu trang hiện tại 
 		$from = (($page * $max_results) - $max_results);  
-
-		// Chạy 1 MySQL query để hiện thị kết quả trên trang hiện tại  
-
 		$sql = $con->query("SELECT * FROM tintuc order by matt DESC LIMIT $from, $max_results"); 
 
 
@@ -64,12 +55,12 @@
         {
 ?>
             <tr class='noidung_hienthi_sp'>
-				<td class="masp_hienthi_sp"><input type="checkbox" name="id[]" class="item" class="checkbox" value="<?=$bien['matt']?>"/></td>
-                <td class="masp_hienthi_sp" width="30"><?php  echo $bien['matt'] ?></td>
-                <td class="stt_hienthi_sp"><?php echo $bien['tieude'] ?></td>
-                <td class="img_hienthi_sp" width="300"> <?php echo $bien['ndngan'] ?>  </td>
-				<td class="sl_hienthi_sp"><img src="../img/tintuc/<?php echo $bien['hinhanh'] ?>" width="80" height="60"/></td>
-				<td class="sl_hienthi_sp"><?php echo $bien['tacgia'] ?></td>
+				<td class="masp_hienthi_sp"><input type="checkbox" name="id[]" class="item" class="checkbox" value="<?=$bien['MaTT']?>"/></td>
+                <td class="masp_hienthi_sp" width="30"><?php  echo $bien['MaTT'] ?></td>
+                <td class="stt_hienthi_sp"><?php echo $bien['TieuDe'] ?></td>
+                <td class="img_hienthi_sp" width="300"> <?php echo $bien['NDNgan'] ?>  </td>
+				<td class="sl_hienthi_sp"><img src="../img/tintuc/<?php echo $bien['HinhAnh'] ?>" width="80" height="60"/></td>
+				<td class="sl_hienthi_sp"><?php echo $bien['TacGia'] ?></td>
                 <td class="active_hienthi_sp">
                     <a href='#'><img src="img/sua.png" title="Sửa"></a>
 				 </td>
@@ -85,14 +76,8 @@
 	<div id="phantrang_sp">
 	
 	<?php
-			// Tính tổng kết quả trong toàn DB:  
-			
 
-			// Tính tổng số trang. Làm tròn lên sử dụng ceil()  
 			$total_pages = ceil($dem / $max_results);  
-
-
-			// Tạo liên kết đến trang trước trang đang xem 
 			if($page > 1){  
 			$prev = ($page - 1);  
 			echo "<a href=\"".$_SERVER['PHP_SELF']."?admin=hienthitt&page=$prev\"><button class='trang'>Trang trước</button></a>&nbsp;";  

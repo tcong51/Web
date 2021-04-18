@@ -56,13 +56,13 @@
         {
 ?>
             <tr class='noidung_hienthi_sp'>
-                <td class="masp_hienthi_sp"><?php  echo $bien['idnd'] ?></td>
-                <td class="stt_hienthi_sp"><?php echo $bien['tennd'] ?></td>
-                <td class="img_hienthi_sp"> <?php echo $bien['username'] ?>  </td>
-				<td class="sl_hienthi_sp"><?php echo $bien['email'] ?></td>
-				<td class="sl_hienthi_sp">0<?php echo $bien['dienthoai'] ?></td>
+                <td class="masp_hienthi_sp"><?php  echo $bien['ID_ND'] ?></td>
+                <td class="stt_hienthi_sp"><?php echo $bien['TenND'] ?></td>
+                <td class="img_hienthi_sp"> <?php echo $bien['UserName'] ?>  </td>
+				<td class="sl_hienthi_sp"><?php echo $bien['Email'] ?></td>
+				<td class="sl_hienthi_sp">0<?php echo $bien['DienThoai'] ?></td>
 				<td class="sl_hienthi_sp"><?php 
-					if($bien['phanquyen']==0)
+					if($bien['PhanQuyen']==1)
 						echo "Administrator";
 					else 
 						echo "Người dùng";
@@ -84,12 +84,8 @@
 	<div id="phantrang_sp">
 	
 	<?php
-		
-			// Tính tổng số trang. Làm tròn lên sử dụng ceil()  
-			$total_pages = $dem / $max_results;  
-			// echo $total_pages;
 
-			// Tạo liên kết đến trang trước trang đang xem 
+			$total_pages = $dem / $max_results;  
 			if($page > 1){  
 			$prev = ($page - 1);  
 			echo "<a href=\"".$_SERVER['PHP_SELF']."?admin=hienthind&page=$prev\"><button class='trang'>Trang trước</button></a>&nbsp;";  

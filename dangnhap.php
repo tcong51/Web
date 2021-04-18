@@ -5,7 +5,7 @@ if(isset($_POST['login']))
 {
     $username = $_POST['user'];
     $password = MD5($_POST['pass']);
-    $sql_check = $con ->query("SELECT * from nguoidung where username = '$username'");
+    $sql_check = $con ->query("SELECT * from nguoidung where UserName = '$username'");
     $dem =$sql_check ->fetch_assoc();
     if($dem == 0)
     {
@@ -19,7 +19,7 @@ if(isset($_POST['login']))
     }
     else
     {
-        $sql_check2 = $con ->query("SELECT * from nguoidung where username = '$username' and password = '$password'");
+        $sql_check2 = $con ->query("SELECT * from nguoidung where UserName = '$username' and Password = '$password'");
         $dem2 = $sql_check2 ->fetch_assoc();
 		
         if($dem2 == 0)
@@ -34,11 +34,11 @@ if(isset($_POST['login']))
             // $row = $sql_check2 ->fetch_assoc();
 			
                 $_SESSION['username'] = $username;
-				$_SESSION['phanquyen'] = $dem2['phanquyen'];
-				$_SESSION['idnd'] = $dem2['idnd'];
+				$_SESSION['phanquyen'] = $dem2['PhanQuyen'];
+				$_SESSION['idnd'] = $dem2['ID_ND'];
 		
                 
-                if($_SESSION['phanquyen']==1)
+                if($_SESSION['PhanQuyen']==2)
 					{
 						echo "
 							<script language='javascript'>

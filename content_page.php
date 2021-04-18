@@ -48,8 +48,8 @@
 					}
 				}
 			elseif(isset($_GET['madm'])) {
-					$sql = "SELECT * FROM sanpham  WHERE madm='{$_GET['madm']}'";	
-					$sql1 = "SELECT * FROM sanpham  WHERE madm='{$_GET['madm']}'";	
+					$sql = "SELECT * FROM hanghoa  WHERE MaLoaiHang='{$_GET['madm']}'";	
+					$sql1 = "SELECT * FROM hanghoa  WHERE MaLoaiHang='{$_GET['madm']}'";	
 					$sql1 = $con ->query($sql1);
 					$dem = 0;
 					foreach($sql1 as $value){
@@ -58,7 +58,7 @@
 				
 					if(isset($GET['madm']))
 					{
-						$sql.="WHERE madm='".$_GET['madm']."'";
+						$sql.="WHERE MaLoaiHang='".$_GET['madm']."'";
 					}
 						if(!isset($_GET['page'])){  
 						$page = 1;  
@@ -69,7 +69,6 @@
 						$max_results = 12;  
 						// Tính số thứ tự giá trị trả về của đầu trang hiện tại 
 						$from = (($page * $max_results) - $max_results);  
-						// Chạy 1 MySQL query để hiện thị kết quả trên trang hiện tại  
 						$sql.=  "LIMIT $from, $max_results";
 					$query=$con ->query($sql);
 					$total=$query->fetch_assoc();
@@ -79,12 +78,12 @@
 					?>						
 						<div class="sanpham">	
 							<?php
-							$sql1="SELECT tendm from danhmuc where madm='{$_GET['madm']}'";
+							$sql1="SELECT TenLoaiHang from LoaiHangHoa where MaLoaiHang='{$_GET['madm']}'";
 							$query1=$con ->query($sql1);
 							$row=$query1->fetch_assoc();
 						
 							?>
-						<h2><?php echo $row['tendm']?></h2>
+						<h2><?php echo $row['TenLoaiHang']?></h2>
 							<div class="sanphamcon">
 								
 								<?php 
@@ -93,21 +92,21 @@
 								
 								<div class="dienthoai">
 									<?php 
-										if($result['khuyenmai1']>1)
+										if($result['KhuyenMai1']>1)
 										{
 									?>
-									<div class="moi"><h3>-<?php echo $result['khuyenmai1']?>%</h3></div>
+									<div class="moi"><h3>-<?php echo $result['KhuyenMai1']?>%</h3></div>
 									<?php } ?>
-									<a href="index.php?content=chitietsp&idsp=<?php echo $result['idsp'] ?>"><img  src="img/uploads/<?php echo $result['hinhanh'];?>"></a>				
-									<p><a href="#" ><?php echo $result['tensp'];?></a></p>
-									<h4><?php echo number_format(($result['gia']*((100-$result['khuyenmai1'])/100)),0,",",".");?></h4>
+									<a href="index.php?content=chitietsp&idsp=<?php echo $result['MSHH'] ?>"><img  src="img/uploads/<?php echo $result['HinhAnh'];?>"></a>				
+									<p><a href="index.php?content=chitietsp&idsp=<?php echo $result['MSHH'] ?>" ><?php echo $result['TenHH'];?></a></p>
+									<h4><?php echo number_format(($result['Gia']*((100-$result['KhuyenMai1'])/100)),0,",",".");?></h4>
 									<div class="button">
 										<ul>
 											<li>
-												<h1><a href="index.php?content=chitietsp&idsp=<?php echo $result['idsp'] ?>" class="chitiet"><button>Chi tiết</button></a></h1>
+												<h1><a href="index.php?content=chitietsp&idsp=<?php echo $result['MSHH'] ?>" class="chitiet"><button>Chi tiết</button></a></h1>
 											</li>
 											<li>
-												<h5><a href="index.php?content=cart&action=add&idsp=<?php echo $result['idsp'] ?>"><button>Cho vào giỏ</button></a></h5>
+												<h5><a href="index.php?content=cart&action=add&idsp=<?php echo $result['MSHH'] ?>"><button>Cho vào giỏ</button></a></h5>
 											</li>
 										</ul>
 									</div><!-- End .button-->
@@ -151,7 +150,7 @@
 						<h2>ĐIỆN THOẠI BÁN CHẠY</h2>
 					<div class="sanphamcon">
 					    <?php 
-						    $sql1="SELECT * FROM sanpham INNER JOIN danhmuc ON sanpham.madm = danhmuc.madm WHERE dequi=1 ORDER BY daban  DESC LIMIT 6 ";
+						    $sql1="SELECT * FROM hanghoa INNER JOIN LoaiHangHoa ON hanghoa.MaLoaiHang = LoaiHangHoa.MaLoaiHang WHERE DeQui=1 ORDER BY DaBan  DESC LIMIT 6 ";
 							$result1= $con->query($sql1);
 						?>
 						<?php 
@@ -160,21 +159,21 @@
 						
 						<div class="dienthoai">
 							<?php 
-										if($row['khuyenmai1']>0)
+										if($row['KhuyenMai1']>0)
 										{
 									?>
-									<div class="moi"><h3>-<?php echo $row['khuyenmai1']?>%</h3></div>
+									<div class="moi"><h3>-<?php echo $row['KhuyenMai1']?>%</h3></div>
 									<?php } ?>
-							<h1><a href="#"><img  src="img/uploads/<?php echo $row['hinhanh'];?>"></a></h1>				
-							<p><a href="#" ><?php echo $row['tensp'];?></a></p>
-							<h4>Giá: <?php echo number_format(($row['gia']*((100-$row['khuyenmai1'])/100)),0,",",".");?></h4>
+							<h1><a href="index.php?content=chitietsp&idsp=<?php echo $row['MSHH'] ?>"><img  src="img/uploads/<?php echo $row['HinhAnh'];?>"></a></h1>				
+							<p><a href="index.php?content=chitietsp&idsp=<?php echo $row['MSHH'] ?>" ><?php echo $row['TenHH'];?></a></p>
+							<h4>Giá: <?php echo number_format(($row['Gia']*((100-$row['KhuyenMai1'])/100)),0,",",".");?></h4>
 							<div class="button">
 										<ul>
 											<li>
-												<h1><a href="index.php?content=chitietsp&idsp=<?php echo $row['idsp'] ?>" class="chitiet"><button>Chi tiết</button></a></h1>
+												<h1><a href="index.php?content=chitietsp&idsp=<?php echo $row['MSHH'] ?>" class="chitiet"><button>Chi tiết</button></a></h1>
 											</li>
 											<li>
-												<h5><a href="index.php?content=cart&action=add&idsp=<?php echo $row['idsp'] ?>"><button>Cho vào giỏ</button></a></h5>
+												<h5><a href="index.php?content=cart&action=add&idsp=<?php echo $row['MSHH'] ?>"><button>Cho vào giỏ</button></a></h5>
 											</li>
 										</ul>
 									</div><!-- End .button-->
@@ -190,7 +189,7 @@
 						<h2>ĐIỆN THOẠI MỚI</h2>
 					<div class="sanphamcon">
 					    <?php 
-						    $sql1="SELECT * from sanpham inner join danhmuc on sanpham.madm = danhmuc.madm where dequi=1 order by idsp  DESC limit 6 ";
+						    $sql1="SELECT * from hanghoa inner join LoaiHangHoa on hanghoa.MaLoaiHang = LoaiHangHoa.MaLoaiHang where DeQui=1 order by MSHH  DESC limit 6 ";
 							$result1= $con ->query($sql1);
 						?>
 						<?php 
@@ -199,21 +198,21 @@
 						
 						<div class="dienthoai">
 							<?php 
-										if($row['khuyenmai1']>0)
+										if($row['KhuyenMai1']>0)
 										{
 									?>
-									<div class="moi"><h3>-<?php echo $row['khuyenmai1']?>%</h3></div>
+									<div class="moi"><h3>-<?php echo $row['KhuyenMai1']?>%</h3></div>
 									<?php } ?>
-							<h1><a href="#"><img  src="img/uploads/<?php echo $row['hinhanh'];?>"></a></h1>				
-							<p><a href="#" ><?php echo $row['tensp'];?></a></p>
-							<h4><?php echo number_format(($row['gia']*((100-$row['khuyenmai1'])/100)),0,",",".");?></h4>
+							<h1><a href="index.php?content=chitietsp&idsp=<?php echo $row['MSHH'] ?>"><img  src="img/uploads/<?php echo $row['HinhAnh'];?>"></a></h1>				
+							<p><a href="index.php?content=chitietsp&idsp= <?php echo $row['MSHH'] ?>" ><?php echo $row['TenHH'];?></a></p>
+							<h4><?php echo number_format(($row['Gia']*((100-$row['KhuyenMai1'])/100)),0,",",".");?></h4>
 							<div class="button">
 										<ul>
 											<li>
-												<h1><a href="index.php?content=chitietsp&idsp=<?php echo $row['idsp'] ?>" class="chitiet"><button>Chi tiết</button></a></h1>
+												<h1><a href="index.php?content=chitietsp&idsp=<?php echo $row['MSHH'] ?>" class="chitiet"><button>Chi tiết</button></a></h1>
 											</li>
 											<li>
-												<h5><a href="index.php?content=cart&action=add&idsp=<?php echo $row['idsp'] ?>"><button>Cho vào giỏ</button></a></h5>
+												<h5><a href="index.php?content=cart&action=add&idsp=<?php echo $row['MSHH'] ?>"><button>Cho vào giỏ</button></a></h5>
 											</li>
 										</ul>
 									</div><!-- End .button-->

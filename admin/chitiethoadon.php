@@ -2,9 +2,13 @@
 <?php
 	include ('../include/connect.php');
 	
-    $select = "select * from chitiethoadon where mahd={$_GET['mahd']}";
+    $select = "SELECT * from chitietdathang where SoDonDH={$_GET['mahd']}";
     $query = $con->query($select);
-    $dem = $query->fetch_assoc();
+    $dem = 0;
+    $q1 =$con->query($select);
+    foreach($q1 as $value){
+        $dem++;
+    }
 ?>
 <div class="quanlysp">
 	<h3>CHI TIẾT HÓA ĐƠN</h3>
@@ -28,15 +32,15 @@
     if($dem > 0){
         while ($bien = $query->fetch_assoc())
         {
-		$thanhtien=$bien['gia']*$bien['soluong'];
+		$thanhtien=$bien['ThanhGia'];
 		$tong+=$thanhtien;
 ?>
 
             <tr class='noidung_hienthi_sp'>
-                <td class="masp_hienthi_sp"><?php  echo $bien['mahd'] ?></td>
-                <td class="stt_hienthi_sp"><?php echo $bien['tensp'] ?></td>
-				<td class="sl_hienthi_sp"><?php echo $bien['soluong'] ?></td>
-				<td class="sl_hienthi_sp"><?php echo number_format($bien['gia'],0,",",".") ?></td>
+                <td class="masp_hienthi_sp"><?php  echo $bien['SoDonDH'] ?></td>
+                <td class="stt_hienthi_sp"><?php echo $bien['TenSP'] ?></td>
+				<td class="sl_hienthi_sp"><?php echo $bien['SoLuong'] ?></td>
+				<td class="sl_hienthi_sp"><?php echo number_format($bien['Gia'],0,",",".") ?></td>
 				<td class="sl_hienthi_sp"><?php echo number_format($thanhtien,0,",",".") ?></td>
                 
             </tr>

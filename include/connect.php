@@ -1,5 +1,5 @@
 <?php
 
-$con = new mysqli('localhost', 'root', '', 'dienthoai');
+$con = new mysqli('localhost', 'root', '', 'quanlydathang');
 $con -> set_charset('utf8');
 ?>

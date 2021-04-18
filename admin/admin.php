@@ -1,6 +1,6 @@
 ﻿<?php 
    session_start();
-   if(!isset($_SESSION['username'])   or ($_SESSION['phanquyen']==1))
+   if(!isset($_SESSION['username'])   or ($_SESSION['phanquyen']==2))
    {
 		
 		header('location:login.php');

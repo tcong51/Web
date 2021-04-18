@@ -14,9 +14,7 @@
 							</script>
 						";
     break;
-    //case"huy":
-    //unset ($_SESSION['cart'][$idsp]);
-    //break;
+
     case"check":
     include('check.php');
     break;
@@ -27,10 +25,10 @@
     include('insert.php');
     break;
     case"add":
-    $sql="select soluong from sanpham where idsp=$stt";
+    $sql="select SoLuongHang from hanghoa where MSHH=$stt";
     $rows=$con->query($sql);
     $row=$rows ->fetch_assoc();
-    if($row['soluong']==0)
+    if($row['SoLuongHang']==0)
     {
         echo '<script language="javascript">
     alert("Sản phẩm này tạm thời hết hàng mời bạn chọn mua sản phẩm khác hoặc quay lại đợt sau 1");
@@ -61,10 +59,10 @@
     break;
     case"addcart":
    // foreach($_POST['idsp'] as $idsp)
-    $sql="select soluong from sanpham where idsp=$stt";
+    $sql="select SoLuongHang from hanghoa where MSHH=$stt";
     $rows=$con->query($sql);
     $row=$rows->fetch_assoc();
-    if($row['soluong']==0)
+    if($row['SoLuongHang']==0)
     {
         echo '<script language="javascript">
     alert("Sản phẩm này tạm thời hết hàng mời bạn chọn mua sản phẩm khác hoặc quay lại đợt sau");
@@ -72,7 +70,7 @@
      history.go(-2);
     </script>';
     }
-    else if($row['soluong']<$_SESSION['cart'][$stt])
+    else if($row['SoLuongHang']<$_SESSION['cart'][$stt])
     {
         echo '<script language="javascript">
     alert("Sỗ lượng bạn đặt mua lớn hơn số hàng còn lại trong kho");

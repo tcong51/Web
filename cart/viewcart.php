@@ -23,7 +23,7 @@
 <td><b>Tùy chọn</b></td></tr>
 <?php
 
-   $sql ="select * from sanpham where idsp in(";
+   $sql ="select * from hanghoa where MSHH in(";
         foreach($_SESSION['cart'] as $stt => $soluong)
             {
               if($soluong>0)
@@ -33,25 +33,25 @@
             {
                 $sql = substr($sql,0,-1);
             }
-      $sql .=' )order by idsp DESC';
+      $sql .=' )order by MSHH DESC';
       $rows=$con->query($sql);
 while($row=$rows->fetch_assoc())
 {
 ?>
  
 
-<form action="index.php?content=cart&action=update&idsp=<?php echo $row['idsp']?>" method="POST" name="update">
+<form action="index.php?content=cart&action=update&idsp=<?php echo $row['MSHH']?>" method="POST" name="update">
 <tr class="sanphamcart">
-<td><p class="carta"><a href="index.php?content=chitietsp&idsp=<?php echo $row['idsp'] ?>"><?php echo $row['tensp']?></a></p></td>
-<td><?php echo number_format(($row['gia']*((100-$row['khuyenmai1'])/100)),0,",",".");?></td>
-<td><input type="text" name="sl" value="<?php echo $_SESSION['cart'][$row['idsp']] ?>" style="width:30px;"/></td>
-<td><?php echo number_format(($row['gia']*((100-$row['khuyenmai1'])/100))*$_SESSION['cart'][$row['idsp']],0,",",".") ?></td>
+<td><p class="carta"><a href="index.php?content=chitietsp&idsp=<?php echo $row['MSHH'] ?>"><?php echo $row['TenHH']?></a></p></td>
+<td><?php echo number_format(($row['Gia']*((100-$row['KhuyenMai1'])/100)),0,",",".");?></td>
+<td><input type="text" name="sl" value="<?php echo $_SESSION['cart'][$row['MSHH']] ?>" style="width:30px;"/></td>
+<td><?php echo number_format(($row['Gia']*((100-$row['KhuyenMai1'])/100))*$_SESSION['cart'][$row['MSHH']],0,",",".") ?></td>
 <td><p class="xoa"><input type="submit" name="huy" value="Xóa"/>
  <input type="submit" class="submit" value="cập nhập" name="submit"/>
  </form>
  </p></td>
 </tr>
-<?php $tongtien+=$_SESSION['cart'][$row['idsp']]*($row['gia']*((100-$row['khuyenmai1'])/100)); ?>
+<?php $tongtien+=$_SESSION['cart'][$row['MSHH']]*($row['Gia']*((100-$row['KhuyenMai1'])/100)); ?>
 <?php
 }
 ?>
